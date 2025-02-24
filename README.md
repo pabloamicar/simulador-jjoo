@@ -27,6 +27,11 @@
 
 TO DO:
 
+- Implementar ESLint (e integracion con Prettier)
+- Implementar Jest y testing
+- Implementar Husky (integracion con Eslint y Jest)
+- Implementar workflows
+- Mejorar el README.md (Como ejecutar, dependencias, objetivo, changelog)
 - Hacer la aplicación manejable por comandos en la consola
 - Añadir nombres y paises aleatorios para inscribir concursantes
 - Mejorar la simulación
