@@ -7,6 +7,6 @@ export class Contestant {
   }
 
   showContestat() {
-    return `${this.name} from ${this.country} !`;
+    return { name: this.name, country: this.country };
   }
 }
