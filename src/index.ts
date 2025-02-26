@@ -2,7 +2,7 @@ import { OlimpicGame } from "./Classes/OlimpicGame.class";
 import { Contestant } from "./Classes/Contestant.class";
 import { Countries } from "./types/interface";
 import { Sports } from "./types/interface";
-console.log("Starting the olimpic games!⚽️🏀🏈⚾️🥎");
+console.log("⚽️🏀🏈⚾️🥎 Starting the olimpic games, Chile 2025!⚽️🏀🏈⚾️🥎");
 
 import { faker } from "@faker-js/faker";
 const sinchornizedSwimming = new OlimpicGame(Sports.Karate);
@@ -27,3 +27,5 @@ sinchornizedSwimming.addContestant(japaneseContestant);
 sinchornizedSwimming.addContestant(germanContestant);
 
 sinchornizedSwimming.playGame();
+
+sinchornizedSwimming.showLeaderboard();

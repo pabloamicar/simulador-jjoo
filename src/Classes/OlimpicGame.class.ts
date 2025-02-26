@@ -1,10 +1,15 @@
 import { Contestant } from "./Contestant.class";
 import { Sports } from "../types/interface";
+import { CountryMedals } from "../types/interface";
+import { Countries } from "../types/interface";
+import { Medals } from "../types/interface";
 
 export class OlimpicGame {
   private contestants: Contestant[];
+  private countriesLeaderboard: CountryMedals[];
   constructor(private name: Sports) {
     this.contestants = [];
+    this.countriesLeaderboard = [];
   }
 
   playGame() {
@@ -36,21 +41,62 @@ export class OlimpicGame {
     this.contestants.sort(() => Math.random() - 0.5);
   }
 
+  private asignMedal(winnerCountry: Countries, medal: Medals) {
+    const index = this.countriesLeaderboard.findIndex(
+      (country) => country.name === winnerCountry
+    );
+    //Sí el país existe, creamos una copia y modificamos el contador de su medalla
+    if (index !== -1) {
+      const updatedCountry = { ...this.countriesLeaderboard[index] };
+      switch (medal) {
+        case Medals.GOLD:
+          updatedCountry.gold++;
+          break;
+        case Medals.SILVER:
+          updatedCountry.silver++;
+          break;
+        case Medals.BRONZE:
+          updatedCountry.bronze++;
+          break;
+      }
+      this.countriesLeaderboard[index] = updatedCountry;
+    } else {
+      // Si el país no existe, lo agregamos con la medalla correspondiente
+      this.countriesLeaderboard.push({
+        name: winnerCountry,
+        gold: medal === Medals.GOLD ? 1 : 0,
+        silver: medal === Medals.SILVER ? 1 : 0,
+        bronze: medal === Medals.BRONZE ? 1 : 0,
+      });
+    }
+  }
+
   private showPlaces() {
     console.log("🏆We got the winners!🏆");
-    const medals = ["🥇", "🥈", "🥉"];
-
     this.contestants.forEach((contestant, index) => {
       const { name, country } = contestant.showContestat();
-
-      const placeText =
-        index < 3
-          ? `${medals[index]} ${index + 1}° place`
-          : `🏅 ${index + 1}° place`;
-
-      console.log(`${placeText} ${name} from ${country}`);
+      switch (index) {
+        case 0:
+          this.asignMedal(country, Medals.GOLD);
+          console.log(`🥇 1st place: ${name} from  ${country}`);
+          break;
+        case 1:
+          this.asignMedal(country, Medals.SILVER);
+          console.log(`🥈 2nd place: ${name} from  ${country}`);
+          break;
+        case 2:
+          this.asignMedal(country, Medals.BRONZE);
+          console.log(`🥉 3rd place: ${name} from  ${country}`);
+          break;
+        default:
+          console.log(`🏅  ${index + 1}° place: ${name} from  ${country}`);
+          break;
+      }
     });
-
     console.log("Thank you for watching the games! 🎉");
+  }
+
+  showLeaderboard() {
+    console.table(this.countriesLeaderboard);
   }
 }
