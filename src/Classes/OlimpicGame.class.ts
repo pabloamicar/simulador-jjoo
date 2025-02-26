@@ -38,23 +38,19 @@ export class OlimpicGame {
 
   private showPlaces() {
     console.log("🏆We got the winners!🏆");
+    const medals = ["🥇", "🥈", "🥉"];
+
     this.contestants.forEach((contestant, index) => {
       const { name, country } = contestant.showContestat();
-      switch (index) {
-        case 0:
-          console.log(`🥇 1st place: ${name} from  ${country}`);
-          break;
-        case 1:
-          console.log(`🥈 2nd place: ${name} from  ${country}`);
-          break;
-        case 2:
-          console.log(`🥉 3rd place: ${name} from  ${country}`);
-          break;
-        default:
-          console.log(`🎗  ${index + 1}° place: ${name} from  ${country}`);
-          break;
-      }
+
+      const placeText =
+        index < 3
+          ? `${medals[index]} ${index + 1}° place`
+          : `🏅 ${index + 1}° place`;
+
+      console.log(`${placeText} ${name} from ${country}`);
     });
+
     console.log("Thank you for watching the games! 🎉");
   }
 }
