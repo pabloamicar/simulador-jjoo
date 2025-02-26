@@ -34,3 +34,16 @@ export enum Sports {
   Karate = "🥋 Karate",
   AutoRacing = "🏎️ Auto Racing",
 }
+
+export interface CountryMedals {
+  name: Countries;
+  gold: number;
+  silver: number;
+  bronze: number;
+}
+
+export enum Medals {
+  GOLD = "gold",
+  SILVER = "silver",
+  BRONZE = "bronze",
+}
