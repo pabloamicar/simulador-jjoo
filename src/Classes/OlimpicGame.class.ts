@@ -1,12 +1,12 @@
 import { Contestant } from "./Contestant.class";
 import { Sports } from "../types/interface";
-import { CountryMedals } from "../types/interface";
+import { InvitedCountry } from "../types/interface";
 import { Countries } from "../types/interface";
 import { Medals } from "../types/interface";
 
 export class OlimpicGame {
   private contestants: Contestant[];
-  private countriesLeaderboard: CountryMedals[];
+  private countriesLeaderboard: InvitedCountry[];
   constructor(private name: Sports) {
     this.contestants = [];
     this.countriesLeaderboard = [];
