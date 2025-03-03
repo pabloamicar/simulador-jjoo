@@ -1,31 +1,10 @@
 import { OlimpicGame } from "./Classes/OlimpicGame.class";
-import { Contestant } from "./Classes/Contestant.class";
-import { Countries } from "./types/interface";
-import { Sports } from "./types/interface";
-console.log("⚽️🏀🏈⚾️🥎 Starting the olimpic games, Chile 2025!⚽️🏀🏈⚾️🥎");
+import { OlimpicEvent } from "./Classes/OlimpicEvent.class";
+import { getRandomSport } from "./Helpers/getRandomSport.helper";
 
-import { faker } from "@faker-js/faker";
-const sinchornizedSwimming = new OlimpicGame(Sports.Karate);
+const chileanOlimpicGames = new OlimpicEvent("Chile 2025");
 
-const chileanContestant = new Contestant("Pablinho", Countries.CHILE);
-const americanContestant = new Contestant(
-  faker.person.fullName(),
-  Countries.USA
-);
-const japaneseContestant = new Contestant(
-  faker.person.fullName(),
-  Countries.JAPAN
-);
-const germanContestant = new Contestant(
-  faker.person.fullName(),
-  Countries.GERMANY
-);
-
-sinchornizedSwimming.addContestant(chileanContestant);
-sinchornizedSwimming.addContestant(americanContestant);
-sinchornizedSwimming.addContestant(japaneseContestant);
-sinchornizedSwimming.addContestant(germanContestant);
-
-sinchornizedSwimming.playGame();
-
-sinchornizedSwimming.showLeaderboard();
+for (let i = 0; i < 3; i++) {
+  chileanOlimpicGames.addGame(new OlimpicGame(getRandomSport()));
+}
+chileanOlimpicGames.startGames();
