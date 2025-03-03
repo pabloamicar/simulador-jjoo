@@ -35,11 +35,9 @@ export enum Sports {
   AutoRacing = "🏎️ Auto Racing",
 }
 
-export interface InvitedCountry {
-  name: Countries;
-  gold: number;
-  silver: number;
-  bronze: number;
+export interface Athlete {
+  name: string;
+  nationality: Countries;
 }
 
 export enum Medals {
