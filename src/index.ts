@@ -1,10 +1,12 @@
 import { Match } from "./Classes/Match.class";
 import { OlimpicGames } from "./Classes/OlimpicGames.class";
 import { getRandomSport } from "./Helpers/getRandomSport.helper";
+import { config } from "./config";
 
-const chileanMatchs = new OlimpicGames("Chile 2025");
+const numberOfMatches = Number(config.NUMBER_OF_MATCHES);
+const chileanMatchs = new OlimpicGames(config.OLIMPIC_GAMES_VERSION);
 
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < numberOfMatches; i++) {
   chileanMatchs.addGame(new Match(getRandomSport()));
 }
 chileanMatchs.startOlimpicGames();

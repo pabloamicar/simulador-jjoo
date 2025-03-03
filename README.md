@@ -16,12 +16,12 @@
 - 3.  Simular eventos de manera aleatoria en base a los participantes (mínimo 3). DONE
 - 4.  Asignar medallas (oro, plata y bronce) basándose en el resultado del evento. DONE
 - 5.  Mostrar los ganadores por cada evento. DONE
-- 6.  Mostrar el ranking de países según el número de medallas.
+- 6.  Mostrar el ranking de países según el número de medallas. DONE
 - Acciones:
 - 1.  Registro de eventos. DONE
 - 2.  Registro de participantes. DONE
 - 3.  Simulación de eventos.DONE
-- 4.  Creación de informes.
+- 4.  Creación de informes. DONE
 - 5.  Salir del programa.
       \*/
 
@@ -33,7 +33,6 @@ TO DO:
 - Implementar workflows
 - Mejorar el README.md (Como ejecutar, dependencias, objetivo, changelog)
 - Hacer la aplicación manejable por comandos en la consola
-- Añadir nombres y paises aleatorios para inscribir concursantes
-- Mejorar la simulación
+- ~~ Añadir nombres y paises aleatorios para inscribir concursantes ~~
 - Mejorar la "aleatoriedad" del juego
-- Hacer un enums de juegos disponibles (Ej: Natación, Volleyball, 100 m planos, etc)
+- ~~ Hacer un enums de juegos disponibles (Ej: Natación, Volleyball, 100 m planos, etc) ~~
