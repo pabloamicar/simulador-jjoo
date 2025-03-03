@@ -1,11 +1,10 @@
-import { OlimpicGame } from "./OlimpicGame.class";
-import { Countries, Medals } from "../types/interface";
-import { Contestant } from "./Contestant.class";
+import { Match } from "./Match.class";
+import { Countries, Medals, Athlete } from "../types/interface";
 import { faker } from "@faker-js/faker";
 import { getRandomCountry } from "../Helpers/getRandomCountry.helper";
 
-export class OlimpicEvent {
-  private games: OlimpicGame[];
+export class OlimpicGames {
+  private matches: Match[];
   private medalTable: {
     country: Countries;
     gold: number;
@@ -14,36 +13,41 @@ export class OlimpicEvent {
   }[];
 
   constructor(private name: string) {
-    this.games = [];
+    this.matches = [];
     this.medalTable = [];
   }
 
-  public addGame(olimpicGame: OlimpicGame) {
-    this.games.push(olimpicGame);
+  public addGame(Match: Match) {
+    this.matches.push(Match);
   }
 
-  private generateRandomContestant() {
-    return new Contestant(faker.person.fullName(), getRandomCountry());
-  }
-
-  public startGames() {
-    if (this.games.length < 1) {
+  public startOlimpicGames() {
+    if (this.matches.length < 1) {
       console.log(
-        "You didn't added any games, dummy. The games are cancelled >:("
+        `You didn't added any matches, dummy. the Olimpic Games, ${OlimpicGames.name}  are cancelled >:(`
       );
       return;
     }
     console.log(
-      `⚽️🏀🏈⚾️🥎 Starting the olimpic games, ${this.name} !⚽️🏀🏈⚾️🥎`
+      `⚽️🏀🏈⚾️🥎 Starting the Olimpic Games, ${this.name} !⚽️🏀🏈⚾️🥎`
     );
 
-    this.games.forEach((game) => {
+    this.matches.forEach((match) => {
       //Hacer todas las asignaciones que haciamos en index.ts
-      game.addContestant(this.generateRandomContestant());
-      game.addContestant(this.generateRandomContestant());
-      game.addContestant(this.generateRandomContestant());
-      game.playGame();
-      this.updateMedalTable(game.getResult());
+      match.addAthlete({
+        name: faker.person.fullName(),
+        nationality: getRandomCountry(),
+      });
+      match.addAthlete({
+        name: faker.person.fullName(),
+        nationality: getRandomCountry(),
+      });
+      match.addAthlete({
+        name: faker.person.fullName(),
+        nationality: getRandomCountry(),
+      });
+      match.playGame();
+      this.updateMedalTable(match.getResult());
     });
     console.table(this.medalTable);
   }

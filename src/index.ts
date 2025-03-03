@@ -1,10 +1,10 @@
-import { OlimpicGame } from "./Classes/OlimpicGame.class";
-import { OlimpicEvent } from "./Classes/OlimpicEvent.class";
+import { Match } from "./Classes/Match.class";
+import { OlimpicGames } from "./Classes/OlimpicGames.class";
 import { getRandomSport } from "./Helpers/getRandomSport.helper";
 
-const chileanOlimpicGames = new OlimpicEvent("Chile 2025");
+const chileanMatchs = new OlimpicGames("Chile 2025");
 
 for (let i = 0; i < 3; i++) {
-  chileanOlimpicGames.addGame(new OlimpicGame(getRandomSport()));
+  chileanMatchs.addGame(new Match(getRandomSport()));
 }
-chileanOlimpicGames.startGames();
+chileanMatchs.startOlimpicGames();
